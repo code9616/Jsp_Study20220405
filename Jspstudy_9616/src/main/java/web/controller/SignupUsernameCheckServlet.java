@@ -2,7 +2,6 @@ package web.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,12 +15,10 @@ import repository.AuthDaoImpl;
 import web.service.AuthService;
 import web.service.AuthServiceImpl;
 
-
-@WebServlet("/signin")
-
-public class SigninServlet extends HttpServlet {
+@WebServlet("/signup-username-check")
+public class SignupUsernameCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private  AuthService authService;
+	private AuthService authService;
 	
 	@Override
 	public void init() throws ServletException {
@@ -29,39 +26,14 @@ public class SigninServlet extends HttpServlet {
 		AuthDao authDao = new AuthDaoImpl(pool);
 		authService = new AuthServiceImpl(authDao);
 	}
-	
-	
+       
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/views/auth/signin.jsp").forward(request, response);
-	}
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html; charset = utf-8");
+		response.setContentType("text/plain;charset=utf-8");
 		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
 		
-		
 		String username = request.getParameter("username");
-		String password = request.getParameter("password");
 		
-		Map<String, ?> msg = authService.signin(username, password);
-		
-		if(msg.containsKey("200")) {
-
-		}else {
-			StringBuilder builder = new StringBuilder();
-			builder.append("<body>");
-			builder.append("<script>");
-			
-			builder.append("alert(\"" + (msg.containsKey("400") ? msg.get("400") : msg.get("500"))  + "\");");
-			builder.append("history.back();");
-			
-			builder.append("</script>");
-			builder.append("</body>");
-			
-			out.println(builder.toString());
-		}
-
+		out.print(authService.usernameCheck(username));
 	}
-
 }
