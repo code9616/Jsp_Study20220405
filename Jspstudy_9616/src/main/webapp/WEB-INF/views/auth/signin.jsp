@@ -27,7 +27,7 @@
 		<div>
 			<h1>로그인</h1>
 		</div>
-		<form action="/Jspstudy_9616/signin" method="Post">
+		<form action="/Jspstudy_9616/auth/signin" method="Post">
 			<div>
 				<div class="item-input">
 					<label class="item-label">사용자이름</label>

@@ -1,4 +1,4 @@
-package web.controller;
+package web.controller.auth;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,7 +15,7 @@ import repository.AuthDaoImpl;
 import web.service.AuthService;
 import web.service.AuthServiceImpl;
 
-@WebServlet("/signup-username-check")
+@WebServlet("/auth/signup-username-check")
 public class SignupUsernameCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private AuthService authService;
@@ -29,7 +29,6 @@ public class SignupUsernameCheckServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/plain;charset=utf-8");
-		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
 		
 		String username = request.getParameter("username");

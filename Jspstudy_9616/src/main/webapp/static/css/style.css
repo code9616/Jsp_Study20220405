@@ -1,0 +1,29 @@
+*{
+	font-size: 14px;
+	
+	margin: 0px;
+	
+	box-sizing: border-box;
+	
+	padding: 0px;
+}
+
+a{
+	text-decoration: none;
+	color: black;
+}
+
+a:hover{
+	color: gray;
+}
+
+#container{
+	margin: 0px auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	
+	width: 1000px;
+	height: 400px;
+}

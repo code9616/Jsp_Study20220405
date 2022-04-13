@@ -45,7 +45,7 @@ usernameInput.onblur = () => {
 	} else {
 		$.ajax({
 			type: "get",
-			url: "/Jspstudy_9616/signup-username-check",
+			url: "/Jspstudy_9616/auth/signup-username-check",
 			data: {
 				"username": username
 			},
